@@ -1,14 +1,31 @@
+<div class="container">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>Posts</h1>
+    <%= link_to "New post", new_post_path %>
+  </div>
 
+  <%= search_form_for @q do |f| %>
+    <div>
+      <%= f.label :content_cont, "Content containing" %>
+      <%= f.text_field :content_cont, :placeholder => "Enter a few characters" %>
+    </div>
 
-<h1>Posts</h1>
+    <div>
+      <%= f.label :user_username_cont, "Username containing" %>
+      <%= f.text_field :user_username_cont, :placeholder => "Enter a few characters" %>
+    </div>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <%= f.submit :class => "btn btn-primary btn-block" %>
+    
+    <a href="/posts">Clear filters</a>
   <% end %>
-</div>
 
-<%= link_to "New post", new_post_path %>
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <%= render post %>
+      <p>
+        <%= link_to "Show this post", post %>
+      </p>
+    <% end %>
+  </div>
+</div>
