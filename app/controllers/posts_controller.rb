@@ -4,9 +4,6 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @breadcrumbs = [
-      {content: "Posts", href: posts_path}
-    ]
     @q = Post.page(params[:page]).ransack(params[:q])
     @posts = @q.result.includes(:user)
   end
