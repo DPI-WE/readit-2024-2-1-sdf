@@ -32,6 +32,8 @@ class PostPolicy < ApplicationPolicy
   private
 
   def author?
+    return false unless record.is_a? Post
+
     record.user == user
   end
 end
