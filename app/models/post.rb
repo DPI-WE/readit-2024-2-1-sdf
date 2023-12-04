@@ -29,4 +29,8 @@ class Post < ApplicationRecord
   def to_s
     "#{user.username}: #{content.truncate(25)}"
   end
+
+  def to_param
+    "#{id}-#{content.truncate(50).parameterize}"
+  end
 end
