@@ -36,6 +36,7 @@ group :development do
   gem "binding_of_caller"
   gem "draft_generators"
   gem "grade_runner"
+  gem "letter_opener", "~> 1.8"
   gem "pry-rails"
   gem "rack-mini-profiler"
   gem "rails_db"

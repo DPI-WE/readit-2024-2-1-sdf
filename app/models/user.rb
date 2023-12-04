@@ -4,11 +4,15 @@
 #
 #  id                     :integer          not null, primary key
 #  admin                  :boolean          default(FALSE)
+#  confirmation_sent_at   :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  unconfirmed_email      :string
 #  username               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -22,10 +26,15 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :posts, class_name: "Post", foreign_key: "user_id", dependent: :destroy
   has_many :comments, class_name: "Comment", foreign_key: "user_id", dependent: :destroy
+
+  # TODO: change to deliver_later when we hook up background jobs
+  after_create { UserMailer.with(user: self).welcome.deliver_now }
+
+  after_create :send_confirmation_email, if: :status_changed_to_confirmed?
 
   def self.ransackable_attributes(auth_object = nil)
     [
