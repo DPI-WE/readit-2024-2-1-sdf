@@ -4,20 +4,36 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    @breadcrumbs = [
+      {content: "Post"}
+    ]
     @posts = Post.all
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @breadcrumbs = [
+      {content: "Post", href: posts_path},
+      {content: @post}
+    ]
   end
 
   # GET /posts/new
   def new
+    @breadcrumbs = [
+      {content: "Post", href: posts_path},
+      {content: "New"}
+    ]
     @post = Post.new
   end
 
   # GET /posts/1/edit
   def edit
+    @breadcrumbs = [
+      {content: "Post", href: posts_path},
+      {content: @post, href: post_path(@post)},
+      {content: "Edit"}
+    ]
   end
 
   # POST /posts or /posts.json
