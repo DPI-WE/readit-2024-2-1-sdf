@@ -21,7 +21,7 @@ unless Rails.env.production?
 
     task add_users: :environment do
       puts "adding users..."
-      names = ["ian", "brian", "calvin", "thierry"]
+      names = Array.new(10) { Faker::Name.first_name.downcase }
 
       names.each do |name|
         u = User.create(
@@ -40,7 +40,7 @@ unless Rails.env.production?
       25.times do |i|
         p = Post.create(
           user_id: User.all.sample.id,
-          content: Faker::TvShows::DumbAndDumber.quote
+          content: Faker::ChuckNorris.fact
         )
       end
       puts "done"
@@ -53,7 +53,7 @@ unless Rails.env.production?
           c = Comment.create(
             post_id: p.id,
             user_id: User.all.sample.id,
-            content: Faker::Movies::HarryPotter.quote
+            content: Faker::Quote.yoda
           )
         end
       end
