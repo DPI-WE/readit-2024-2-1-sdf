@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @breadcrumbs = [
       {content: "Post"}
     ]
-    @posts = Post.all
+    @posts = Post.default_order.page(params[:page]).per(5)
   end
 
   # GET /posts/1 or /posts/1.json
