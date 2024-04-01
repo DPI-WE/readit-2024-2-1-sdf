@@ -1,0 +1,9 @@
+<h1>New comment</h1>
+
+<p>Hi <%= @comment.post.user.username %>,</p>
+
+<p><%= @comment.user.username %> just made a new comment</p>
+
+<hr>
+
+<p><%= @comment.content.truncate_words(10) %></p>
