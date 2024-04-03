@@ -1,7 +1,10 @@
 <div id="<%= dom_id post %>" class="card">
   <div class="card-header">
     <div class="d-flex align-items-center">
-      <h5 class="card-title me-auto"><%= post.user.username %></h5>
+      <h5 class="card-title me-auto">
+        <%= image_tag(post.user.avatar, class: "rounded", size: 50) if post.user.avatar.attached? %>
+        <%= post.user.username %>
+      </h5>
       <%= link_to edit_post_path(@post), class: "me-3" do %>
         <i class="fa-solid fa-pen-to-square fa-xl"></i>
       <% end %>

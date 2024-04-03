@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.1"
 
 gem "appdev_support"
+gem 'aws-sdk-s3', require: false
 gem "awesome_print"
 gem "bootsnap", require: false
 gem "devise"
