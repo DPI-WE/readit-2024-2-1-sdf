@@ -25,7 +25,6 @@ class User < ApplicationRecord
           :registerable,
           :recoverable,
           :rememberable,
-          :trackable,
           :validatable
 
   has_many :posts, class_name: "Post", foreign_key: "user_id", dependent: :destroy
