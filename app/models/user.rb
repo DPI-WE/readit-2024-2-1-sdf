@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_many :posts, class_name: "Post", foreign_key: "user_id", dependent: :destroy
   has_many :comments, class_name: "Comment", foreign_key: "user_id", dependent: :destroy
 
+  has_one_attached :avatar
+
   def self.ransackable_attributes(auth_object = nil)
     [
       "username"
