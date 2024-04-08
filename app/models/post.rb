@@ -2,7 +2,7 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  content    :text
 #  link       :text
 #  created_at :datetime         not null

@@ -10,6 +10,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "dotenv-rails"
 gem "faker"
+gem "good_job"
 gem "htmlbeautifier"
 gem "http"
 gem "importmap-rails"
