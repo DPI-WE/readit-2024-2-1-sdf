@@ -32,7 +32,7 @@ class User < ApplicationRecord
   has_many :comments, class_name: "Comment", foreign_key: "user_id", dependent: :destroy
 
   # TODO: deliver_later after setting up job processing
-  after_create { UsersMailer.welcome(self).deliver_now }
+  after_create { UsersMailer.welcome.deliver_now }
 
   def self.ransackable_attributes(auth_object = nil)
     [

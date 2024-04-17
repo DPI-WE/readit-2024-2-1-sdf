@@ -22,11 +22,11 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    author? || user.admin?
+    author? || user&.admin?
   end
 
   def destroy?
-    author? || user.admin?
+    author? || user&.admin?
   end
 
   private

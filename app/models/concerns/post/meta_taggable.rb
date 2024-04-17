@@ -1,10 +1,8 @@
 module Post::MetaTaggable
   extend ActiveSupport::Concern
-  
-  include ApplicationHelper # we need this so we can extend default meta tags
 
   def to_meta_tags
-    post_tags = {
+    MetaTagService.defaults.deep_merge({
       title: user.username,
       description: content,
       og: {
@@ -12,8 +10,6 @@ module Post::MetaTaggable
         description: content,
         site_name: "Readit"
       },
-    }
-
-    post_tags
+    })
   end
 end
