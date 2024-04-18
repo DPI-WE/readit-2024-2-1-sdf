@@ -49,8 +49,6 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'rails_db'
   gem 'rails-erd'
-  gem 'rubocop', require: false
-  gem 'rubocop-rails', require: false
   gem 'rufo'
   gem 'specs_to_readme'
   gem 'web-console'
@@ -59,6 +57,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
