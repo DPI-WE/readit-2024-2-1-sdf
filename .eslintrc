@@ -1,0 +1,17 @@
+{
+  "env": {
+    "browser": true,  // This replaces the globals.browser import
+    "es2021": true
+  },
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended" 
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/no-unresolved": 0
+  }
+}
