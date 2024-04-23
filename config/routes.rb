@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/service-worker.js', to: 'service_worker#service_worker'
+  get '/manifest.json', to: 'service_worker#manifest'
 
   authenticate :user, ->(user) { user.admin? } do
     mount Blazer::Engine, at: "blazer"
